@@ -55,7 +55,7 @@ function Car(model, milesPerGallon) {
   this.odometer = 0
 }
 Car.prototype.fill = function(gallons){
-  return this.odometer + gallons
+  return this.tank = this.tank + gallons
 }
 
 
@@ -66,19 +66,22 @@ Car.prototype.fill = function(gallons){
     - Besides the methods on Person.prototype, babies also have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-
-function Baby() {
-
+function Baby(name, age, favoriteToy) {
+  Person.call(this, name, age)
+  this.favoriteToy = favoriteToy
 }
-
+Baby.prototype = Object.create(Person.prototype)
+Baby.prototype.play = function(){
+  return `Playing with ${this.favoriteToy}`
+}
 
 /* 
   TASK 4
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. Window/Global Object Binding: when the this keyword in executed in a global scope, it will return the window and show you everything
+  2. Implicit Binding: Especially when using the this keyword, is sees within the block level and is implied that it is applied to said block
+  3. New binding: using the word new allows us to basically create a new bit of data to bind to a funciton that we have already declared.
+  4. Explicit binding: this is when we call a function when we are writing outside of the executable block for that function
 */
 
 ///////// END OF CHALLENGE /////////
